@@ -17,11 +17,13 @@ If you like it, please show some love by sharing it and giving it a ⭐!
 
 ### 👉️ Are you hiring? 👀
 
-If you're hiring, please contact me on LinkedIn:
+If you're hiring, please reach out!
 
 <a href="https://linkedin.com/in/itsbrianroach" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
 </a>
+
+<br>
 
 My areas of expertise include:
 
