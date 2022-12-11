@@ -28,10 +28,6 @@
 			"256": "icons/icon256x256.png"
 		}
 	},
-	"host_permissions": [
-		"https://*.openai.com/*",
-		"https://openai.com/*",
-		"https://chat.openai.com/chat"
-	],
-	"permissions": ["tabs", "activeTab", "cookies", "clipboardWrite"]
+	"host_permissions": ["https://*.openai.com/*"],
+	"permissions": ["activeTab", "cookies", "clipboardWrite"]
 }

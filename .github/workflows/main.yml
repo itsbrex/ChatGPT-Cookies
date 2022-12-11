@@ -1,0 +1,71 @@
+name: Release
+
+env:
+  DIRECTORY: distribution
+  PROJECT_NAME: extension
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '31 13 * * 3'
+
+jobs:
+  Version:
+    outputs:
+      created: ${{ steps.daily-version.outputs.created }}
+      version: ${{ steps.daily-version.outputs.version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 20
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - name: install
+        run: npm ci || npm install
+      - run: npm test
+      - uses: fregante/daily-version-action@v2
+        name: Create tag if necessary
+        id: daily-version
+      - if: steps.daily-version.outputs.created
+        name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd $DIRECTORY
+          zip -r "$PROJECT_NAME-local-install.zip" *
+          gh release create "${{ steps.daily-version.outputs.version }}" --generate-notes "$PROJECT_NAME.zip"
+
+  Submit:
+    needs: Version
+    if: github.event_name == 'workflow_dispatch' || needs.Version.outputs.created || github.event_name == 'push'
+    strategy:
+      fail-fast: false
+      matrix:
+        command:
+          - chrome
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - name: install
+        run: npm ci || npm install
+      - run: npm run build --if-present
+      - name: Update extension’s meta
+        run: npx dot-json@1 $DIRECTORY/manifest.json version ${{ needs.Version.outputs.version }}
+      - name: Submit
+        run: |
+          cd $DIRECTORY && npx chrome-webstore-upload-cli@2 upload --auto-publish
+        env:
+          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
