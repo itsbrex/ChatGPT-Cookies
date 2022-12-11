@@ -13,6 +13,18 @@ Try it out today and see how much easier it is to copy your ChatGPT Session Toke
 
 If you like it, please show some love by sharing it and giving it a ⭐!
 
+---
+
+### 👉️ Are you hiring? 👀
+
+If you're hiring, please contact me on LinkedIn: [**Brian Roach**](https://www.linkedin.com/in/itsbrianroach/)
+
+My areas of expertise include 💪
+
+- **Tools:** Google Cloud, Firebase, Cloud Functions, BigQuery, Google Data Studio, AWS SDK for Javascript, Amazon SES, Lambda Functions, API Gateway, SQL, Vercel
+- **Languages:** JavaScript, TypeScript Python, SQL
+- **Other competencies:** DevOps, Automation, Project management and leadership skills, Performance/Process optimization and scalability, Technology integration, Strategy development
+
 <br>
 
 ![Copy Token gif](copy-token.gif)
