@@ -1,15 +1,11 @@
 name: Release
 
 env:
-  DIRECTORY: distribution
-  PROJECT_NAME: extension
+  DIRECTORY: .
+  PROJECT_NAME: Copy-ChatGPT-Session-Token-Chrome-Extension
 
 on:
-  workflow_dispatch:
-  # You can manually trigger a deployment on GitHub.com
-  # https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/
-  schedule:
-    - cron: '31 13 * * 3'
+  push:
 
 jobs:
   Submit:
@@ -22,12 +18,10 @@ jobs:
           cache: npm
       - name: install
         run: npm ci || npm install
-      - run: npm run build --if-present
-      - name: Update extension’s meta
-        run: npx dot-json@1 $DIRECTORY/manifest.json version ${{ github.run_number }}
       - name: Submit
         run: |
-          cd $DIRECTORY && npx chrome-webstore-upload-cli@2 upload --auto-publish
+          cd $DIRECTORY
+          npx chrome-webstore-upload-cli@2 upload --auto-publish
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
