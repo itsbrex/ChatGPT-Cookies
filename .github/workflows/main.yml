@@ -25,7 +25,7 @@ jobs:
       - name: Submit
         run: |
           cd $DIRECTORY
-          npx chrome-webstore-upload-cli@2 upload --extension-id "${{ secrets.EXTENSION_ID }}" "$PROJECT_NAME.zip"
+          npx chrome-webstore-upload-cli@2 upload --source $PROJECT_NAME.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
