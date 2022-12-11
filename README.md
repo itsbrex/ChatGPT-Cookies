@@ -17,9 +17,13 @@ If you like it, please show some love by sharing it and giving it a ⭐!
 
 ### 👉️ Are you hiring? 👀
 
-If you're hiring, please contact me on LinkedIn: [**Brian Roach**](https://www.linkedin.com/in/itsbrianroach/)
+If you're hiring, please contact me on LinkedIn:
 
-My areas of expertise include 💪
+<a href="https://linkedin.com/in/itsbrianroach" target="_blank">
+<img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
+</a>
+
+My areas of expertise include:
 
 - **Tools:** Google Cloud, Firebase, Cloud Functions, BigQuery, Google Data Studio, AWS SDK for Javascript, Amazon SES, Lambda Functions, API Gateway, SQL, Vercel
 - **Languages:** JavaScript, TypeScript Python, SQL
