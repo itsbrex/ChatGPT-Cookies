@@ -12,7 +12,7 @@ This Chrome extension allows you to easily copy your ChatGPT session token to yo
 
 ![Copy Token gif](copy-token.gif)
 
-## Extension Permissions / Privacy
+## Extension Permissions
 
 - The `"permissions"` property grants the extension access to the following:
 
