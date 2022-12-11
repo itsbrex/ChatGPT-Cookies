@@ -18,12 +18,18 @@ jobs:
           cache: npm
       - name: install
         run: npm ci || npm install
+      - name: Create zip file
+        run: |
+          cd $DIRECTORY
+          zip -r "$PROJECT_NAME.zip" *
       - name: Submit
         run: |
           cd $DIRECTORY
-          npx chrome-webstore-upload-cli@2 upload --auto-publish
+          npx chrome-webstore-upload-cli@2 upload --auto-publish "$PROJECT_NAME.zip"
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+      - name: Clean up
+        run: rm "$PROJECT_NAME.zip"
