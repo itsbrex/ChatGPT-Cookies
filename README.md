@@ -1,10 +1,25 @@
 # Copy ChatGPT Session Token
 
-This Chrome extension allows you to easily copy your ChatGPT session token to your clipboard with just one click.
+This is a simple Chrome extension that allows you to copy your ChatGPT Session Token (`__Secure-next-auth.session-token`) with just one click!
+
+## Features:
+
+- Copy your ChatGPT Session Token with just one click.
+- No need to use Dev Tools or search for cookies.
+- Save time and make your ChatGPT experience more efficient.
+- Great for developers who need to access their session tokens quickly.
+
+Try it out today and see how much easier it is to copy your ChatGPT Session Token with this handy extension!
+
+If you like it, please show some love by sharing it and giving it a ⭐!
+
+<br>
+
+![Copy Token gif](copy-token.gif)
 
 ## How to Install
 
-To install this locally:
+**Install Locally:**
 
 1.  Download the code on GitHub.
 2.  Unzip the downloaded file.
@@ -12,6 +27,17 @@ To install this locally:
 4.  Turn on Developer mode by clicking the toggle switch in the top right corner of the page.
 5.  Click the `Load unpacked` button and select the directory where you unzipped the extension files.
 6.  Copy ChatGPT Session Token extension should be installed and ready to go!
+    <br>
+
+**From the Chrome Web Store:**
+
+- I submitted it to Chrome Webstore. Once it's live, I'll add the link here and in the repo description.
+
+1. ~~Open Chrome on your computer and navigate to the extension's page on the Chrome Web Store.~~
+2. ~~Click on the "Add to Chrome" button to install the extension.~~
+3. ~~Once the extension is installed, click on the extension icon in the top-right corner of your Chrome browser.~~
+4. ~~The extension will automatically copy your ChatGPT Session Token to your clipboard.~~
+5. ~~You can then paste the token into any text field or use it in your code.~~
 
 ## Usage
 
@@ -20,8 +46,6 @@ To install this locally:
 3. The extension will copy your session token to your clipboard.
 4. Save the token as `SESSION_TOKEN` in your project's `.env` file.
 5. Have fun!
-
-![Copy Token gif](copy-token.gif)
 
 ## Extension Permissions
 
@@ -34,16 +58,23 @@ To install this locally:
 - The `"host_permissions"` property grants the extension access to the following:
   - `https://*.openai.com/*:` Allows the extension to access pages within the openai.com domain.
 
+<br>
+
 In summary, the extension is only able to access the information on the current active tab, as well as read and write to the clipboard on pages within the openai.com domain.
 
 **It is NOT able to access any information on pages that are not on the openai.com domain.**
 
 Read more here [chrome.tabs - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/tabs/)
 
+<br>
+
 ## Icon
 
-The extension icon was created using DALL-E-2. :)
-![Copy ChatGPT Session Token icon ](icons/icon256x256.png)
+<p align="center">
+  <img src="icons/icon256x256.png" alt="Copy ChatGPT Session Token icon" />
+  <br>
+  The extension icon was created using DALL-E-2.
+</p>
 
 ## License
 
