@@ -28,7 +28,7 @@ If you're hiring, please reach out!
 My areas of expertise include:
 
 - **Tools:** Google Cloud, Firebase, Cloud Functions, BigQuery, Google Data Studio, AWS SDK for Javascript, Amazon SES, Lambda Functions, API Gateway, SQL, Vercel
-- **Languages:** JavaScript, TypeScript Python, SQL
+- **Languages:** Node.js, React.js, Typescript, Python, SQL
 - **Other competencies:** DevOps, Automation, Project management and leadership skills, Performance/Process optimization and scalability, Technology integration, Strategy development
 
 <br>
