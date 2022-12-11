@@ -2,6 +2,17 @@
 
 This Chrome extension allows you to easily copy your ChatGPT session token to your clipboard with just one click.
 
+## How to Install
+
+To install this locally:
+
+1.  Download the code on GitHub.
+2.  Unzip the downloaded file.
+3.  In case of Google Chrome, open the Extensions page (chrome://extensions/).
+4.  Turn on Developer mode by clicking the toggle switch in the top right corner of the page.
+5.  Click the `Load unpacked` button and select the directory where you unzipped the extension files.
+6.  Copy ChatGPT Session Token extension should be installed and ready to go!
+
 ## Usage
 
 1. Navigate to the ChatGPT website.
@@ -32,6 +43,7 @@ Read more here [chrome.tabs - Chrome Developers](https://developer.chrome.com/do
 ## Icon
 
 The extension icon was created using DALL-E-2. :)
+![Copy ChatGPT Session Token icon ](icons/icon256x256.png)
 
 ## License
 
