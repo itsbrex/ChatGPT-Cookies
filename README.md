@@ -27,15 +27,29 @@ If you're hiring, please reach out!
 
 My areas of expertise include:
 
-- **Tools:** Google Cloud, Firebase, Cloud Functions, BigQuery, Google Data Studio, AWS SDK for Javascript, Amazon SES, Lambda Functions, API Gateway, SQL, Vercel
-- **Languages:** Node.js, React.js, Typescript, Python, SQL
-- **Other competencies:** DevOps, Automation, Project management and leadership skills, Performance/Process optimization and scalability, Technology integration, Strategy development
+- DevOps, Infrastructure Automation, Agile Project Management
+- Strategy Development, Technology Integration, Performance Optimization
+- Google Cloud, Firebase, Cloud Functions, BigQuery, Data Studio
+- AWS (SES/Lambda/API Gateway)
+- Node.js, React, Typescript, Python
+- SQL, Google Clasp, Vercel, Tailwind
+
 
 <br>
 
 ![Copy Token gif](copy-token.gif)
 
 ## How to Install
+
+**From the Chrome Web Store:**
+
+- [Copy ChatGPT Session Token - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
+
+1. Open Chrome on your computer and navigate to the extension's page on the Chrome Web Store.
+2. Click on the "Add to Chrome" button to install the extension.
+3. Once the extension is installed, click on the extension icon in the top-right corner of your Chrome browser.
+4. The extension will automatically copy your ChatGPT Session Token to your clipboard.
+5. You can then paste the token into any text field or use it in your code.
 
 **Install Locally:**
 
@@ -47,15 +61,7 @@ My areas of expertise include:
 6.  Copy ChatGPT Session Token extension should be installed and ready to go!
     <br>
 
-**From the Chrome Web Store:**
 
-- I submitted it to Chrome Webstore. Once it's live, I'll add the link here and in the repo description.
-
-1. ~~Open Chrome on your computer and navigate to the extension's page on the Chrome Web Store.~~
-2. ~~Click on the "Add to Chrome" button to install the extension.~~
-3. ~~Once the extension is installed, click on the extension icon in the top-right corner of your Chrome browser.~~
-4. ~~The extension will automatically copy your ChatGPT Session Token to your clipboard.~~
-5. ~~You can then paste the token into any text field or use it in your code.~~
 
 ## Usage
 
