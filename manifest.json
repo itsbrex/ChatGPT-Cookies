@@ -1,10 +1,10 @@
 {
 	"update_url": "https://clients2.google.com/service/update2/crx",
-	"name": "Copy ChatGPT Session Token",
+	"name": "ChatGPT Cookies+",
 	"author": "Brian Roach",
-	"homepage_url": "https://github.com/itsbrex/Copy-ChatGPT-Session-Token",
-	"description": "One click to copy your ChatGPT Session Token to the clipboard",
-	"version": "1.0",
+	"homepage_url": "https://github.com/itsbrex/ChatGPT-Cookies-Plus",
+	"description": "Easily copy your ChatGPT cookies + user-agent to clipboard with one click.",
+	"version": "1.0.1",
 	"manifest_version": 3,
 	"background": {
 		"service_worker": "background.js"
@@ -17,7 +17,7 @@
 		"128": "icons/icon128x128.png",
 		"256": "icons/icon256x256.png"
 	},
-	"action": {
+	"browser_action": {
 		"default_popup": "popup.html",
 		"default_icon": {
 			"16": "icons/icon16x16.png",
@@ -28,6 +28,5 @@
 			"256": "icons/icon256x256.png"
 		}
 	},
-	"host_permissions": ["https://*.openai.com/*"],
-	"permissions": ["activeTab", "cookies", "clipboardWrite"]
+	"permissions": ["activeTab", "cookies", "clipboardWrite", "https://*.openai.com/*"]
 }

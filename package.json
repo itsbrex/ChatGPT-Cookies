@@ -1,27 +1,30 @@
 {
-  "name": "copy-chatgpt-session-token-chrome-extension",
-  "version": "1.0.0",
-  "description": "One click to copy your ChatGPT Session Token to the clipboard",
-  "main": "background.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/itsbrex/Copy-ChatGPT-Session-Token.git"
-  },
-  "keywords": [
-    "chatgpt",
-    "chrome-extension",
-    "cookies"
-  ],
-  "author": "Brian Roach",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/itsbrex/Copy-ChatGPT-Session-Token/issues"
-  },
-  "homepage": "https://github.com/itsbrex/Copy-ChatGPT-Session-Token#readme",
-  "dependencies": {
-    "chrome-webstore-upload-cli": "^2.1.0"
-  }
+	"name": "copy-chatgpt-session-token-chrome-extension",
+	"version": "1.0.1",
+	"description": "Easily copy your ChatGPT cookies + user-agent to clipboard with one click.",
+	"main": "background.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/itsbrex/ChatGPT-Cookies-Plus.git"
+	},
+	"keywords": [
+		"chatgpt",
+		"chrome-extension",
+		"session-token",
+		"copy",
+		"clipboard",
+		"cookies"
+	],
+	"author": "Brian Roach",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/itsbrex/ChatGPT-Cookies-Plus/issues"
+	},
+	"homepage": "https://github.com/itsbrex/ChatGPT-Cookies-Plus#readme",
+	"dependencies": {
+		"chrome-webstore-upload-cli": "^2.1.0"
+	}
 }
