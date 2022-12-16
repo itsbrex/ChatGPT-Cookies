@@ -2,7 +2,7 @@ name: Release
 
 env:
   DIRECTORY: .
-  PROJECT_NAME: Copy-ChatGPT-Session-Token-Chrome-Extension
+  PROJECT_NAME: ChatGPT-Cookies+
 
 on:
   push:
