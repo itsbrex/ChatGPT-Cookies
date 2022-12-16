@@ -1,19 +1,25 @@
-# Copy ChatGPT Cookies++
+# ChatGPT Cookies+ Chrome Extension
 
-This is a simple Chrome extension that allows you to copy your ChatGPT `Session Token`, `cf_clearance`, and `User-Agent` with just one click!
+Easily copy your ChatGPT cookies + user-agent to clipboard with one click.
 
 ## Features:
 
-- Copy your ChatGPT `Session Token`, `cf_clearance`, and `User-Agent` values with just one click.
-- No need to use Dev Tools to search for cookies & network requests.
-- Save time and make your ChatGPT experience more efficient.
-- Great for developers who need to access their session tokens quickly.
+- One-click copy your ChatGPT:
+  - `__Secure-next-auth.session-token`
+  - `cf_clearance`
+  - `User-Agent`
+- No need to use Dev Tools or search through network requests
+- Simply click the extension button to copy all three values to your clipboard.
 
-Try it out today and see how much easier it is to copy your ChatGPT Session Token with this handy extension!
+## Give it a try!
 
-If you like it, please show some love by sharing it and giving it a ⭐!
+If you find this extension helpful, please consider sharing it and giving it a ⭐ here and leave a review on the Chrome Web Store. I appreciate your support!
+
+<br>
 
 ---
+
+<br>
 
 ### 👉️ Are you hiring? 👀
 
@@ -24,16 +30,6 @@ If you're hiring, please reach out!
 </a>
 
 <br>
-
-My areas of expertise include:
-
-- DevOps, Infrastructure Automation, Agile Project Management
-- Strategy Development, Technology Integration, Performance Optimization
-- Google Cloud, Firebase, Cloud Functions, BigQuery, Data Studio
-- AWS (SES/Lambda/API Gateway)
-- Node.js, React, Typescript, Python
-- SQL, Google Clasp, Vercel, Tailwind
-
 <br>
 
 ![Copy Token gif](copy-token.gif)
@@ -42,7 +38,7 @@ My areas of expertise include:
 
 **From the Chrome Web Store:**
 
-- [Copy ChatGPT Session Token - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
+👉️ [Copy ChatGPT Cookie+ - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
 
 1. Open Chrome on your computer and navigate to the extension's page on the Chrome Web Store.
 2. Click on the "Add to Chrome" button to install the extension.
@@ -64,8 +60,8 @@ My areas of expertise include:
 
 1. Navigate to the ChatGPT website.
 2. Click on the extension icon in your Chrome toolbar.
-3. The extension will copy your session token to your clipboard.
-4. Save or paste your `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` values in your project's `.env` file or whereever as needed.
+3. The extension will copy the the two cookies + your user-agent values to your clipboard.
+4. Save or paste your `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` values in your project's `.env` file or wherever as needed.
 5. Have fun!
 
 ## Example output
