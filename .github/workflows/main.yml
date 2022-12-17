@@ -27,20 +27,20 @@ jobs:
           node-version: 16
           # Cache the npm dependencies for faster execution
           cache: npm
-      # Bump the patch version number in the package.json file
-      - name: Bump version number
-        env:
-          GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
-          GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
-        run: npm version patch -m "Bump version number to %s" --git-author="${{ secrets.GIT_USER_EMAIL }} <${{ secrets.GIT_USER_NAME }}>"
+      - name: install
+        run: npm ci || npm install
+      # # Bump the patch version number in the package.json file
+      # - name: Bump version number
+      #   env:
+      #     GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+      #     GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+      #   run: npm version patch -m "Bump version number to %s" --git-author="${{ secrets.GIT_USER_EMAIL }} <${{ secrets.GIT_USER_NAME }}>"
 
       # Generate a file called release-notes.md containing the commit messages of the commits made since the last tag
       - name: Generate release notes
         run: |
           git log --pretty=format:'%s' HEAD $(git describe --tags --abbrev=0) | awk '{print "- "$0}' > release-notes.md
       # Install the dependencies specified in the package.json file using npm ci or npm install, depending on which one is available
-      - name: install
-        run: npm ci || npm install
       # Create a zip file of the entire project directory
       - name: Create zip file
         run: |
