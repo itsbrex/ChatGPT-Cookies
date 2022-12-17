@@ -16,21 +16,42 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      - name: install
-        run: npm ci || npm install
+      - name: Bump version number
+        run: |
+          npm version patch -m "Bump version number to %s"
+      - name: Generate release notes
+        run: |
+          git log --pretty=format:'%s' HEAD $(git describe --tags --abbrev=0) | awk '{print "- "$0}' > release-notes.md
       - name: Create zip file
         run: |
           cd $DIRECTORY
           zip -r "$PROJECT_NAME.zip" *
-      - name: Submit
+      - name: Create GitHub release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body_path: release-notes.md
+      - name: Submit extension
         run: |
           cd $DIRECTORY
           npx chrome-webstore-upload-cli@2 upload --source $PROJECT_NAME.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
+          npx chrome-webstore-upload-cli@2 publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-
+      - name: Update extension metadata
+        run: |
+          cd $DIRECTORY
+          npx chrome-webstore-upload-cli@2 update --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN --publish --release-notes "$(cat release-notes.md)"
+        env:
+          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
       - name: Clean up
         run: rm "$PROJECT_NAME.zip"
