@@ -12,6 +12,10 @@ on:
   # The workflow is triggered when a push event occurs on the repository
   push:
 
+env:
+  GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+  GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+  
 # Define the job that runs as part of the workflow
 jobs:
   Submit:
@@ -30,8 +34,7 @@ jobs:
           cache: npm
       # Bump the patch version number in the package.json file
       - name: Bump version number
-        run: |
-          npm version patch -m "Bump version number to %s"
+        run: npm version patch -m "Bump version number to %s" --git-author="$GIT_USER_NAME <$GIT_USER_EMAIL>"
 
       # Generate a file called release-notes.md containing the commit messages of the commits made since the last tag
       - name: Generate release notes
