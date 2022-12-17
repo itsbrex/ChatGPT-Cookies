@@ -7,8 +7,6 @@ env:
   # Set the PROJECT_NAME environment variable to the name of the project
   PROJECT_NAME: ChatGPT-Cookies+
 
-  GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
-  GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
 # Set up the trigger for the workflow
 on:
   # The workflow is triggered when a push event occurs on the repository
@@ -32,6 +30,9 @@ jobs:
       # Bump the patch version number in the package.json file
       - name: Bump version number
         run: npm version patch -m "Bump version number to %s" --git-author="$GIT_USER_NAME <$GIT_USER_EMAIL>"
+        env:
+          GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
+          GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
 
       # Generate a file called release-notes.md containing the commit messages of the commits made since the last tag
       - name: Generate release notes
