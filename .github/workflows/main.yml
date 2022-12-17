@@ -1,57 +1,92 @@
 name: Release
 
+# Set up environment variables for use in the workflow
 env:
+  # Set the DIRECTORY environment variable to the current directory (.)
   DIRECTORY: .
+  # Set the PROJECT_NAME environment variable to the name of the project
   PROJECT_NAME: ChatGPT-Cookies+
 
+# Set up the trigger for the workflow
 on:
+  # The workflow is triggered when a push event occurs on the repository
   push:
 
+# Define the job that runs as part of the workflow
 jobs:
   Submit:
+    # Run the job on an Ubuntu machine
     runs-on: ubuntu-latest
     steps:
+      # Check out the code from the repository
       - uses: actions/checkout@v3
+
+      # Set up a Node.js environment and install the dependencies specified in the package.json file
       - uses: actions/setup-node@v3
         with:
+          # Use Node.js version 16
           node-version: 16
+          # Cache the npm dependencies for faster execution
           cache: npm
+      # Bump the patch version number in the package.json file
       - name: Bump version number
         run: |
           npm version patch -m "Bump version number to %s"
+
+      # Generate a file called release-notes.md containing the commit messages of the commits made since the last tag
       - name: Generate release notes
         run: |
           git log --pretty=format:'%s' HEAD $(git describe --tags --abbrev=0) | awk '{print "- "$0}' > release-notes.md
+      # Install the dependencies specified in the package.json file using npm ci or npm install, depending on which one is available
+      - name: install
+        run: npm ci || npm install
+      # Create a zip file of the entire project directory
       - name: Create zip file
         run: |
           cd $DIRECTORY
           zip -r "$PROJECT_NAME.zip" *
-      - name: Create GitHub release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-          body_path: release-notes.md
-      - name: Submit extension
-        run: |
-          cd $DIRECTORY
-          npx chrome-webstore-upload-cli@2 upload --source $PROJECT_NAME.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
-          npx chrome-webstore-upload-cli@2 publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
-        env:
-          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+
+      # Use the chrome-webstore-upload-cli tool to update the extension metadata
       - name: Update extension metadata
         run: |
           cd $DIRECTORY
           npx chrome-webstore-upload-cli@2 update --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN --publish --release-notes "$(cat release-notes.md)"
         env:
+          # Use the EXTENSION_ID, CLIENT_ID, CLIENT_SECRET, and REFRESH_TOKEN secrets as environment variables
+          # to authenticate with the Chrome Web Store API
+          EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN:
+            ${{ secrets.REFRESH_TOKEN }}
+            # Use the actions/create-release action to create a release on GitHub and attach the zip file to the release
+      - name: Create GitHub release
+        uses: actions/create-release@v1
+        # Use the GITHUB_TOKEN secret as an environment variable to authenticate with the GitHub API
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Use the tag name v followed by the run number of the workflow
+          tag_name: v${{ github.run_number }}
+          # Use the release name "Release" followed by the run number of the workflow
+          release_name: Release ${{ github.run_number }}
+          # Use the contents of the release-notes.md file as the body of the release
+          body_path: release-notes.md
+
+      # Use the chrome-webstore-upload-cli tool to upload the zip file to the Chrome Web Store and publish the extension
+      - name: Submit extension
+        run: |
+          cd $DIRECTORY
+          npx chrome-webstore-upload-cli@2 upload --source $PROJECT_NAME.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
+        # npx chrome-webstore-upload-cli@2 publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN
+        env:
+          # Use the EXTENSION_ID, CLIENT_ID, CLIENT_SECRET, and REFRESH_TOKEN secrets as environment variables
+          # to authenticate with the Chrome Web Store API
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+
+      # Clean up by deleting the zip file
       - name: Clean up
         run: rm "$PROJECT_NAME.zip"
