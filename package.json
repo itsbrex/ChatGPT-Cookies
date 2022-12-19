@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/itsbrex/ChatGPT-Cookies-Plus.git"
+		"url": "git+https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus.git"
 	},
 	"keywords": [
 		"chatgpt",
@@ -21,9 +21,9 @@
 	"author": "Brian Roach",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/itsbrex/ChatGPT-Cookies-Plus/issues"
+		"url": "https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus/issues"
 	},
-	"homepage": "https://github.com/itsbrex/ChatGPT-Cookies-Plus#readme",
+	"homepage": "https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus#readme",
 	"dependencies": {
 		"chrome-webstore-upload-cli": "^2.1.0"
 	}
