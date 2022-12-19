@@ -1,42 +1,29 @@
-# ChatGPT Cookies+ Chrome Extension
+# Copy ChatGPT Cookies+ Chrome Extension
 
-Easily copy your ChatGPT cookies + user-agent to clipboard with one click.
-
-![ChatGPT-Cookies-Plus](https://socialify.git.ci/itsbrex/ChatGPT-Cookies-Plus/image?description=1&descriptionEditable=Chrome%20Extension&logo=https%3A%2F%2Fgithub.com%2Fitsbrex%2FCopy-ChatGPT-Session-Token%2Fblob%2Fmain%2Ficons%2Ficon256x256.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Circuit%20Board&theme=Dark)
-
-## Features:
-
-- One-click copy your ChatGPT:
-  - `__Secure-next-auth.session-token`
-  - `cf_clearance`
-  - `User-Agent`
-- No need to use Dev Tools or search through network requests
-- Simply click the extension button to copy all three values to your clipboard.
-
-## Give it a try!
-
-If you find this extension helpful, please consider sharing it and giving it a ⭐ here and leave a review on the Chrome Web Store. I appreciate your support!
+Easily copy your ChatGPT cookies + user-agent values to the clipboard.
 
 <br>
 
----
+![Copy-ChatGPT-Cookies-Plus](https://socialify.git.ci/itsbrex/ChatGPT-Cookies-Plus/image?description=1&descriptionEditable=SESSION_TOKEN%2C%20USER_AGENT%2C%20and%20CF_CLEARANCE&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2Fitsbrex%2FCopy-ChatGPT-Session-Token%2Fblob%2Fmain%2Ficons%2Ficon256x256.png%3Fraw%3Dtrue&name=1&pattern=Solid&theme=Dark)
 
-<br>
+<div style="text-align: center">
 
-### 👉️ Are you hiring? 👀
-
-If you're hiring, please reach out!
+If you're hiring, please reach out! 🙏
 
 <a href="https://linkedin.com/in/itsbrianroach" target="_blank">
-<img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
+<img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px; border-radius: 6px" />
 </a>
+</div>
 
-<br>
-<br>
+## Features
+
+- 📋️ Copy the values to your clipboard with a single click!
+
+  Currently supports the following values: - `__Secure-next-auth.session-token` - `cf_clearance` - `user-agent`
 
 ## Demo
 
-![Copy Token gif](copy-token.gif)
+![Copy Tokens gif](copy-token.gif)
 
 ## Example output
 
@@ -51,56 +38,46 @@ CF_CLEARANCE:
 aDb4vZuUfhisisjsbfytfjdbndD1xktq_lcwC9ceIAo-1671161322-0-1-7662cbc0.801c6f70.12d6215e-160
 ```
 
-## How to Install
+> **Note:** The `CF_CLEARANCE` value is only valid for 2 hours. This extension helps you copy that value again quickly. Exploring options for a fix to address this in a future release.
 
-**From the Chrome Web Store:**
+## Install
 
-👉️ [Copy ChatGPT Cookie+ - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
+### Chrome Web Store (recommended)
 
-1. Open Chrome on your computer and navigate to the extension's page on the Chrome Web Store.
-2. Click on the "Add to Chrome" button to install the extension.
-3. Once the extension is installed, click on the extension icon in the top-right corner of your Chrome browser.
-4. The extension will automatically copy your ChatGPT Session Token to your clipboard.
-5. You can then paste the token into any text field or use it in your code.
+1. Install 👉️ [Copy ChatGPT Cookies+ - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
+2. Navigate to the ChatGPT website 👉️ https://chat.openai.com/chat
+3. Click on the extension icon in the Chrome toolbar.
+4. The extension will automatically copy the `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` values to your clipboard.
+5. Paste the values wherever they are needed in your project, such as in the `.env` file
 
-**Install Locally:**
+### Install Locally (latest features)
 
-1.  Download the code on GitHub.
-2.  Unzip the downloaded file.
-3.  In case of Google Chrome, open the Extensions page (chrome://extensions/).
-4.  Turn on Developer mode by clicking the toggle switch in the top right corner of the page.
-5.  Click the `Load unpacked` button and select the directory where you unzipped the extension files.
-6.  Copy ChatGPT Session Token extension should be installed and ready to go!
-    <br>
+1. Download the code on GitHub.
+2. Unzip the downloaded file.
+3. In the Chrome browser, open the Extensions page (chrome://extensions/).
+4. Turn on Developer mode by clicking the toggle switch in the top right corner of the page.
+5. Click the `Load unpacked` button and select the directory where you unzipped the extension files.
+6. The extension should now be installed and ready to use.
+</details>
 
-## Usage
+## Bugs / Feature Requests
 
-1. Navigate to the ChatGPT website.
-2. Click on the extension icon in your Chrome toolbar.
-3. The extension will copy the the two cookies + your user-agent values to your clipboard.
-4. Save or paste your `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` values in your project's `.env` file or wherever as needed.
-5. Have fun!
+- For bug reports or feature requests, please [open an issue](https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus/issues).
+- To view roadmap and current progress, please see the [github projects page](https://github.com/users/itsbrex/projects/4/views/1)
 
 ## Extension Permissions
 
-- The `"permissions"` property grants the extension access to the following:
+- `"host_permissions"` property grants the extension access to the following:
 
-  - `activeTab:` Allows the extension to access information on the current active tab.
-  - `cookies:` Allows the extension to read and write cookies.
-  - `clipboardWrite:` Allows the extension to write to the clipboard.
+  - `https://*.openai.com/*:` allows the extension to access pages within the openai.com domain **_only_**.
 
-- The `"host_permissions"` property grants the extension access to the following:
-  - `https://*.openai.com/*:` Allows the extension to access pages within the openai.com domain.
+- `"permissions"` property grants the extension access to the following within the scope above:
+  - `activeTab:` allows the extension to access information on the current active tab.
+  - `cookies:` allows the extension to read and write cookies.
+  - `clipboardWrite:` allows the extension to write to the clipboard.
+    <br>
 
-<br>
-
-Basically, the extension is only able to access the information on the current active tab, as well as read and write to the clipboard on pages within the openai.com domain.
-
-**It is NOT able to access any information on pages that are not on the openai.com domain.**
-
-Read more here [chrome.tabs - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/tabs/)
-
-<br>
+> More info here: [Chrome Extensions Declare permissions](https://developer.chrome.com/docs/extensions/mv3/declare_permissions/#host-permissions)
 
 ## Icon
 
@@ -113,3 +90,10 @@ Read more here [chrome.tabs - Chrome Developers](https://developer.chrome.com/do
 ## License
 
 This extension is licensed under the MIT License. See the [LICENSE](https://github.com/itsbrex/Copy-ChatGPT-Session-Token/blob/master/LICENSE) file for more information.
+
+## Acknowledgements
+
+- Thanks OpenAI for the amazing [ChatGPT](https://openai.com/blog/chatgpt/) project
+- Repo social share image made with [GitHub Socialify](https://socialify.git.ci/)
+- Extension icon made with [DALL-E-2](https://openai.com/dall-e-2/)
+- Chrome Web Store assets [Figma template](https://www.figma.com/community/file/1088380138639295338) from [Miki Ishiima](https://www.figma.com/@mikiishijima)
