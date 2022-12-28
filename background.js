@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener((details) => {
 	if (details.reason === 'install') {
-		chrome.tabs.create({ url: 'public/onboarding.html' });
+		chrome.tabs.create({ url: 'onboarding.html' });
 	}
 });
 

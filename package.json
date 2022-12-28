@@ -25,6 +25,10 @@
 	},
 	"homepage": "https://github.com/itsbrex/GPT-Cookies#readme",
 	"dependencies": {
-		"chrome-webstore-upload-cli": "^2.1.0"
+		"@chakra-ui/react": "2.4.2",
+		"@emotion/react": "^11.10.5",
+		"@emotion/styled": "^11.10.5",
+		"chrome-webstore-upload-cli": "^2.1.0",
+		"framer-motion": "^6.5.1"
 	}
 }
