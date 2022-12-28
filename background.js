@@ -9,14 +9,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
 				var finalOutput = `CF_CLEARANCE=${cfClearance}\r\n\r\nSESSION_TOKEN=${sessionToken}\r\n\r\nUSER_AGENT="${userAgent}"\r\n`;
 
-				var copySessionTokenButton = document.createElement('button');
-				copySessionTokenButton.innerHTML = 'Copy Session Token';
-				copySessionTokenButton.addEventListener('click', function () {
-					navigator.clipboard.writeText(sessionToken);
-					displayCopyMessage(this);
-				});
-				document.body.appendChild(copySessionTokenButton);
-
 				var copyCfClearanceButton = document.createElement('button');
 				copyCfClearanceButton.innerHTML = 'Copy CF Clearance';
 				copyCfClearanceButton.addEventListener('click', function () {
@@ -24,6 +16,14 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 					displayCopyMessage(this);
 				});
 				document.body.appendChild(copyCfClearanceButton);
+
+				var copySessionTokenButton = document.createElement('button');
+				copySessionTokenButton.innerHTML = 'Copy Session Token';
+				copySessionTokenButton.addEventListener('click', function () {
+					navigator.clipboard.writeText(sessionToken);
+					displayCopyMessage(this);
+				});
+				document.body.appendChild(copySessionTokenButton);
 
 				var copyUserAgentButton = document.createElement('button');
 				copyUserAgentButton.innerHTML = 'Copy User Agent';
@@ -36,15 +36,26 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 				var seperator = document.createElement('hr');
 				document.body.appendChild(seperator);
 
+				var copyAllButton = document.createElement('button');
+				copyAllButton.innerHTML = 'Copy All';
+				copyAllButton.addEventListener('click', function () {
+					navigator.clipboard.writeText(finalOutput);
+					displayCopyMessage(this);
+				});
+				document.body.appendChild(copyAllButton);
+
+				var seperator = document.createElement('hr');
+				document.body.appendChild(seperator);
+
 				var downloadLink = document.createElement('a');
 
 				downloadLink.innerHTML =
-					'<img src="download-light.png" style="width: 20px; height: 20px; margin-right: 5px; vertical-align: middle;" /> .env-cookies';
+					'<img src="download-light.png" style="width: 20px; height: 20px; margin-right: 5px; vertical-align: middle;" /> .env-all';
 				downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(finalOutput);
-				downloadLink.download = '.env-cookies';
+				downloadLink.download = '.env-all';
 				downloadLink.addEventListener('click', function (e) {
 					e.preventDefault();
-					download('.env-cookies', finalOutput);
+					download('.env-all', finalOutput);
 				});
 				document.body.appendChild(downloadLink);
 
