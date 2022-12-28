@@ -13,7 +13,7 @@ body {
 }
 
 .box {
-	max-width: 600px;
+	max-width: 1200px;
 	width: 90%;
 	padding: 20px;
 	box-sizing: border-box;
@@ -29,8 +29,8 @@ body {
 }
 
 img {
-	height: 72px;
-	width: 72px;
+	height: 144px;
+	width: 144px;
 	/* border-radius: 50%; */
 	margin-right: 20px;
 	margin-left: auto;
@@ -39,7 +39,7 @@ img {
 }
 
 h1 {
-	font-size: 28px;
+	font-size: 56px;
 	font-weight: 700;
 	margin: 0;
 	/* center h1 on page */
@@ -54,8 +54,8 @@ mark {
 kbd {
 	display: inline-block;
 	padding: 3px 5px;
-	font-size: 12px;
-	line-height: 10px;
+	font-size: 24px;
+	line-height: 20px;
 	color: #555;
 	vertical-align: middle;
 	background-color: #fcfcfc;
@@ -69,20 +69,32 @@ ol {
 	margin: 0;
 	padding: 0;
 }
-
+p {
+	font-size: 28px;
+	line-height: 1.5;
+}
 ol li {
 	margin-bottom: 10px;
-	font-size: 14px;
+	font-size: 28px;
 	line-height: 1.5;
 }
 
 a {
-	color: #0070ba;
-	text-decoration: none;
+	background-image: linear-gradient(to right, #ff00a2, #f700ff, #6600ff);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 a:hover {
-	text-decoration: underline;
+	background-image: linear-gradient(to right, #6600ff, #f700ff, #ff00a2);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 /* styles for light mode */
@@ -104,7 +116,7 @@ a:hover {
 }
 
 .gradient-text {
-	background-image: linear-gradient(to right, #ff0000, #ff0066, #6600ff);
+	background-image: linear-gradient(to right, #ff00a2, #f700ff, #6600ff);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	-webkit-background-clip: text;
