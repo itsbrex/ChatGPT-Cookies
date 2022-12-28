@@ -1,3 +1,9 @@
+chrome.runtime.onInstalled.addListener((details) => {
+	if (details.reason === 'install') {
+		chrome.tabs.create({ url: 'public/onboarding.html' });
+	}
+});
+
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 	chrome.cookies.get(
 		{ url: tabs[0].url, name: '__Secure-next-auth.session-token' },

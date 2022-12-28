@@ -1,6 +1,6 @@
 {
-	"name": "ChatGPT-Cookies-Plus",
-	"version": "1.0.1",
+	"name": "GPT-Cookies",
+	"version": "1.2",
 	"description": "Easily copy your ChatGPT cookies + user-agent to clipboard with one click.",
 	"main": "background.js",
 	"scripts": {
@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus.git"
+		"url": "git+https://github.com/itsbrex/GPT-Cookies.git"
 	},
 	"keywords": [
 		"chatgpt",
@@ -21,9 +21,9 @@
 	"author": "Brian Roach",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus/issues"
+		"url": "https://github.com/itsbrex/GPT-Cookies/issues"
 	},
-	"homepage": "https://github.com/itsbrex/Copy-ChatGPT-Cookies-Plus#readme",
+	"homepage": "https://github.com/itsbrex/GPT-Cookies#readme",
 	"dependencies": {
 		"chrome-webstore-upload-cli": "^2.1.0"
 	}
