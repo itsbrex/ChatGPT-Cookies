@@ -1,34 +1,76 @@
-// Get the user agent using navigator.userAgent and append to finalOutput
-var userAgent = navigator.userAgent;
-var finalOutput = 'USER_AGENT: \r\n' + userAgent + '\r\n\r\n';
-
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 	chrome.cookies.get(
 		{ url: tabs[0].url, name: '__Secure-next-auth.session-token' },
-		function (cookie) {
-			finalOutput += 'SESSION_TOKEN: \r\n' + cookie.value + '\r\n\r\n';
-			chrome.cookies.get({ url: tabs[0].url, name: 'cf_clearance' }, function (cookie) {
-				finalOutput += 'CF_CLEARANCE: \r\n' + cookie.value + '\r\n';
-				var area = document.createElement('textarea');
-				area.style.position = 'absolute';
-				area.style.border = '0';
-				area.style.padding = '0';
-				area.style.margin = '0';
-				area.style.height = '1px';
-				area.style.top = '-10px';
-				area.innerHTML = finalOutput;
-				document.body.appendChild(area, document.body.firstChild);
+		function (sessionTokenCookie) {
+			chrome.cookies.get({ url: tabs[0].url, name: 'cf_clearance' }, function (cfClearanceCookie) {
+				var sessionToken = sessionTokenCookie.value;
+				var cfClearance = cfClearanceCookie.value;
+				var userAgent = navigator.userAgent;
 
-				var range = document.createRange();
-				range.selectNodeContents(area);
+				var finalOutput = `CF_CLEARANCE=${cfClearance}\r\n\r\nSESSION_TOKEN=${sessionToken}\r\n\r\nUSER_AGENT="${userAgent}"\r\n`;
 
-				var selection = window.getSelection();
-				if (selection !== null) {
-					// check if selection is not null just to be safe
-					selection.removeAllRanges();
-					selection.addRange(range);
-					document.execCommand('copy');
-					document.body.removeChild(area);
+				var copySessionTokenButton = document.createElement('button');
+				copySessionTokenButton.innerHTML = 'Copy Session Token';
+				copySessionTokenButton.addEventListener('click', function () {
+					navigator.clipboard.writeText(sessionToken);
+					displayCopyMessage(this);
+				});
+				document.body.appendChild(copySessionTokenButton);
+
+				var copyCfClearanceButton = document.createElement('button');
+				copyCfClearanceButton.innerHTML = 'Copy CF Clearance';
+				copyCfClearanceButton.addEventListener('click', function () {
+					navigator.clipboard.writeText(cfClearance);
+					displayCopyMessage(this);
+				});
+				document.body.appendChild(copyCfClearanceButton);
+
+				var copyUserAgentButton = document.createElement('button');
+				copyUserAgentButton.innerHTML = 'Copy User Agent';
+				copyUserAgentButton.addEventListener('click', function () {
+					navigator.clipboard.writeText(userAgent);
+					displayCopyMessage(this);
+				});
+				document.body.appendChild(copyUserAgentButton);
+
+				var seperator = document.createElement('hr');
+				document.body.appendChild(seperator);
+
+				var downloadLink = document.createElement('a');
+
+				downloadLink.innerHTML =
+					'<img src="download-light.png" style="width: 20px; height: 20px; margin-right: 5px; vertical-align: middle;" /> .env-cookies';
+				downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(finalOutput);
+				downloadLink.download = '.env-cookies';
+				downloadLink.addEventListener('click', function (e) {
+					e.preventDefault();
+					download('.env-cookies', finalOutput);
+				});
+				document.body.appendChild(downloadLink);
+
+				function displayCopyMessage(button) {
+					button.originalText = button.innerHTML;
+
+					button.innerHTML = 'Copied!';
+					button.style.backgroundColor = '#3e8e41';
+
+					setTimeout(function () {
+						button.innerHTML = button.originalText;
+						button.style.backgroundColor = '#2196f3';
+					}, 3000);
+				}
+
+				function download(filename, text) {
+					var element = document.createElement('a');
+					element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+					element.setAttribute('download', filename);
+
+					element.style.display = 'none';
+					document.body.appendChild(element);
+
+					element.click();
+
+					document.body.removeChild(element);
 				}
 			});
 		},
