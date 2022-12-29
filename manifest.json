@@ -3,8 +3,8 @@
 	"name": "GPT Cookies",
 	"author": "Brian Roach",
 	"homepage_url": "https://github.com/itsbrex/GPT-Cookies",
-	"description": "Easily copy your ChatGPT cookies + user-agent to clipboard with one click.",
-	"version": "1.0.1",
+	"description": "Easily copy or download your ChatGPT cookies + user-agent values with one click.",
+	"version": "2.0",
 	"manifest_version": 3,
 	"background": {
 		"service_worker": "background.js"

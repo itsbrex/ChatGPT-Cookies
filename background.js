@@ -5,91 +5,123 @@ chrome.runtime.onInstalled.addListener((details) => {
 });
 
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-	chrome.cookies.get(
-		{ url: tabs[0].url, name: '__Secure-next-auth.session-token' },
-		function (sessionTokenCookie) {
-			chrome.cookies.get({ url: tabs[0].url, name: 'cf_clearance' }, function (cfClearanceCookie) {
-				var sessionToken = sessionTokenCookie.value;
-				var cfClearance = cfClearanceCookie.value;
-				var userAgent = navigator.userAgent;
+	if (!tabs[0].url.includes('chat.openai.com')) {
+		chrome.tabs.create({ url: 'https://chat.openai.com/chat' });
+		return;
+	}
 
-				var finalOutput = `CF_CLEARANCE=${cfClearance}\r\n\r\nSESSION_TOKEN=${sessionToken}\r\n\r\nUSER_AGENT="${userAgent}"\r\n`;
+	chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+		chrome.cookies.get(
+			{ url: tabs[0].url, name: '__Secure-next-auth.session-token' },
+			function (sessionTokenCookie) {
+				chrome.cookies.get(
+					{ url: tabs[0].url, name: 'cf_clearance' },
+					function (cfClearanceCookie) {
+						var sessionToken = sessionTokenCookie.value;
+						var cfClearance = cfClearanceCookie.value;
+						var userAgent = navigator.userAgent;
 
-				var copyCfClearanceButton = document.createElement('button');
-				copyCfClearanceButton.innerHTML = 'Copy CF Clearance';
-				copyCfClearanceButton.addEventListener('click', function () {
-					navigator.clipboard.writeText(cfClearance);
-					displayCopyMessage(this);
-				});
-				document.body.appendChild(copyCfClearanceButton);
+						var finalOutput = `CF_CLEARANCE=${cfClearance}\r\n\r\nSESSION_TOKEN=${sessionToken}\r\n\r\nUSER_AGENT="${userAgent}"\r\n`;
 
-				var copySessionTokenButton = document.createElement('button');
-				copySessionTokenButton.innerHTML = 'Copy Session Token';
-				copySessionTokenButton.addEventListener('click', function () {
-					navigator.clipboard.writeText(sessionToken);
-					displayCopyMessage(this);
-				});
-				document.body.appendChild(copySessionTokenButton);
+						var copyCfClearanceButton = document.createElement('button');
+						copyCfClearanceButton.innerHTML = 'Copy CF Clearance';
+						copyCfClearanceButton.addEventListener('click', function () {
+							navigator.clipboard.writeText(cfClearance);
+							displayCopyMessage(this);
+						});
+						document.body.appendChild(copyCfClearanceButton);
 
-				var copyUserAgentButton = document.createElement('button');
-				copyUserAgentButton.innerHTML = 'Copy User Agent';
-				copyUserAgentButton.addEventListener('click', function () {
-					navigator.clipboard.writeText(userAgent);
-					displayCopyMessage(this);
-				});
-				document.body.appendChild(copyUserAgentButton);
+						var copySessionTokenButton = document.createElement('button');
+						copySessionTokenButton.innerHTML = 'Copy Session Token';
+						copySessionTokenButton.addEventListener('click', function () {
+							navigator.clipboard.writeText(sessionToken);
+							displayCopyMessage(this);
+						});
+						document.body.appendChild(copySessionTokenButton);
 
-				var seperator = document.createElement('hr');
-				document.body.appendChild(seperator);
+						var copyUserAgentButton = document.createElement('button');
+						copyUserAgentButton.innerHTML = 'Copy User Agent';
+						copyUserAgentButton.addEventListener('click', function () {
+							navigator.clipboard.writeText(userAgent);
+							displayCopyMessage(this);
+						});
+						document.body.appendChild(copyUserAgentButton);
 
-				var copyAllButton = document.createElement('button');
-				copyAllButton.innerHTML = 'Copy All';
-				copyAllButton.addEventListener('click', function () {
-					navigator.clipboard.writeText(finalOutput);
-					displayCopyMessage(this);
-				});
-				document.body.appendChild(copyAllButton);
+						var seperator = document.createElement('hr');
+						document.body.appendChild(seperator);
 
-				var seperator = document.createElement('hr');
-				document.body.appendChild(seperator);
+						var copyAllButton = document.createElement('button');
+						copyAllButton.innerHTML = 'Copy All';
+						copyAllButton.addEventListener('click', function () {
+							navigator.clipboard.writeText(finalOutput);
+							displayCopyMessage(this);
+						});
+						document.body.appendChild(copyAllButton);
 
-				var downloadLink = document.createElement('a');
+						var seperator = document.createElement('hr');
+						document.body.appendChild(seperator);
 
-				downloadLink.innerHTML =
-					'<img src="download-light.png" style="width: 20px; height: 20px; margin-right: 5px; vertical-align: middle;" /> .env-all';
-				downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(finalOutput);
-				downloadLink.download = '.env-all';
-				downloadLink.addEventListener('click', function (e) {
-					e.preventDefault();
-					download('.env-all', finalOutput);
-				});
-				document.body.appendChild(downloadLink);
+						var downloadLink = document.createElement('a');
 
-				function displayCopyMessage(button) {
-					button.originalText = button.innerHTML;
+						downloadLink.innerHTML =
+							'<img id="downloadIcon" src="download-light.png" style="width: 20px; height: 20px; margin-right: 5px; vertical-align: middle;" /> .env-all';
+						downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(finalOutput);
+						downloadLink.download = '.env-all';
+						downloadLink.addEventListener('click', function (e) {
+							e.preventDefault();
+							download('.env-all', finalOutput);
+							displayDownloadMessage(this);
+						});
+						downloadLink.onmouseover = function () {
+							document.getElementById('downloadIcon').src = 'download-dark.png';
+						};
+						downloadLink.onmouseout = function () {
+							document.getElementById('downloadIcon').src = 'download-light.png';
+						};
+						document.body.appendChild(downloadLink);
 
-					button.innerHTML = 'Copied!';
-					button.style.backgroundColor = '#3e8e41';
+						function displayCopyMessage(button) {
+							button.originalText = button.innerHTML;
 
-					setTimeout(function () {
-						button.innerHTML = button.originalText;
-						button.style.backgroundColor = '#2196f3';
-					}, 3000);
-				}
+							button.innerHTML = 'Copied!';
+							button.style.backgroundColor = '#503EE2';
 
-				function download(filename, text) {
-					var element = document.createElement('a');
-					element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-					element.setAttribute('download', filename);
+							setTimeout(function () {
+								button.innerHTML = button.originalText;
+								button.style.backgroundColor = '#F5057B';
+							}, 3000);
+						}
+						function displayDownloadMessage(a) {
+							a.originalText = a.innerHTML;
 
-					element.style.display = 'none';
-					document.body.appendChild(element);
+							a.innerHTML = 'Downloaded .env-all!';
+							a.style.backgroundColor = '#503EE2';
 
-					element.click();
+							setTimeout(function () {
+								a.innerHTML = a.originalText;
+								document.getElementById('downloadIcon').src = 'download-light.png';
+								a.style.backgroundColor = '#F5057B';
+							}, 3000);
+						}
 
-					document.body.removeChild(element);
-				}
-			});
-		},
-	);
+						function download(filename, text) {
+							var element = document.createElement('a');
+							element.setAttribute(
+								'href',
+								'data:text/plain;charset=utf-8,' + encodeURIComponent(text),
+							);
+							element.setAttribute('download', filename);
+
+							element.style.display = 'none';
+							document.body.appendChild(element);
+
+							element.click();
+
+							document.body.removeChild(element);
+						}
+					},
+				);
+			},
+		);
+	});
 });
