@@ -4,7 +4,7 @@ Easily copy your ChatGPT Cookies + user-agent values to the clipboard.
 
 <br>
 
-![ChatGPT-Cookies-repo-social-share-image](ChatGPT-Cookies.png)
+![ChatGPT-Cookies](https://socialify.git.ci/itsbrex/ChatGPT-Cookies/image?description=1&descriptionEditable=CF_CLEARANCE%0A-%0ASESSION_TOKEN%0A-%0AUSER_%20AGENT&font=Source%20Code%20Pro&logo=https%3A%2F%2Fgithub.com%2Fitsbrex%2FCopy-ChatGPT-Session-Token%2Fblob%2Fmain%2Ficons%2Ficon256x256.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Solid&theme=Dark)
 
 <div style="text-align: center">
 
