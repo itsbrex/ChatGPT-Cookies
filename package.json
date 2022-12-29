@@ -1,7 +1,7 @@
 {
 	"name": "GPT-Cookies",
 	"version": "2.0",
-	"description": "Easily copy and download your ChatGPT cookies + user-agent to clipboard with one click.",
+	"description": "Easily copy and download your ChatGPT Cookies + user-agent to clipboard with one click.",
 	"main": "background.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

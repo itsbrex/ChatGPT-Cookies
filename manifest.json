@@ -1,9 +1,9 @@
 {
 	"update_url": "https://clients2.google.com/service/update2/crx",
-	"name": "GPT Cookies",
+	"name": "ChatGPT Cookies",
 	"author": "Brian Roach",
 	"homepage_url": "https://github.com/itsbrex/GPT-Cookies",
-	"description": "Easily copy or download your ChatGPT cookies + user-agent values with one click.",
+	"description": "Easily copy or download your ChatGPT Cookies + user-agent values with one click.",
 	"version": "2.0",
 	"manifest_version": 3,
 	"background": {
