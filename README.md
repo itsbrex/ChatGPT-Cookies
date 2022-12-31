@@ -57,7 +57,7 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like 
 1. Install 👉️ [ChatGPT Cookies - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
 2. Click on the extension icon in the Chrome toolbar to automatically navigate to the ChatGPT website 👉️ https://chat.openai.com/chat
 3. Select one of the options to automatically copy the `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` or all values at once to your clipboard, or download a single `.env-all` with all of them.
-4. Paste the values wherever they are needed in your project, such as in the `.env` file
+4. Paste the values wherever they are needed in your project, such as in the `.env` file.
 
 ### Install Locally (latest features)
 
