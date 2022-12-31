@@ -1,6 +1,8 @@
 # ChatGPT Cookies - Chrome Extension
 
-Easily copy your ChatGPT Cookies + user-agent values to the clipboard.
+[![GitHub stars](https://img.shields.io/github/stars/itsbrex/ChatGPT-Cookies?style=for-the-badge)]() [![GitHub forks](https://img.shields.io/github/forks/itsbrex/ChatGPT-Cookies?style=for-the-badge)]() [![GitHub issues](https://img.shields.io/github/issues/itsbrex/ChatGPT-Cookies?style=for-the-badge)]() [![GitHub license](https://img.shields.io/github/license/itsbrex/ChatGPT-Cookies?style=for-the-badge)]()
+
+This Chrome Extension allows you to quickly and easily copy ChatGPT cookie values and user-agent strings to your clipboard, or export a single `.env` file with everything.
 
 <br>
 
@@ -8,27 +10,30 @@ Easily copy your ChatGPT Cookies + user-agent values to the clipboard.
 
 <div style="text-align: center">
 
-If you're hiring, please reach out! 🙏
+Full-Stack Product Manager
+Available for hire [late july](https://links.dev/brian) - Please reach out 🙋‍♂️
 
 <a href="https://linkedin.com/in/itsbrianroach" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px; border-radius: 6px" />
 </a>
 </div>
 
+<br>
+
 ## Features
 
 - 📋️ Copy individual or all values to clipboard with a single click!
-- 📁 Export as an `.env-all.txt`
+- 📁 Export all values as an `.env-all.txt` file.
 
   Currently supports the following values:
 
-  - `__Secure-next-auth.session-token`
   - `cf_clearance`
+  - `__Secure-next-auth.session-token`
   - `user-agent`
 
 ## Demo
 
-![Copy Tokens gif](gpt-cookies-v2-demo.gif)
+![chatgpt-cookies-v2-demo](chatgpt-cookies-v2-demo.gif)
 
 ## Example output
 
@@ -50,10 +55,9 @@ Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like 
 ### Chrome Web Store (recommended)
 
 1. Install 👉️ [ChatGPT Cookies - Chrome Web Store](https://chrome.google.com/webstore/detail/copy-chatgpt-session-toke/nnkcnhbioochcaoeofflcljhhpceoknl)
-2. Navigate to the ChatGPT website 👉️ https://chat.openai.com/chat
-3. Click on the extension icon in the Chrome toolbar.
-4. The extension will automatically copy the `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` values to your clipboard.
-5. Paste the values wherever they are needed in your project, such as in the `.env` file
+2. Click on the extension icon in the Chrome toolbar to automatically navigate to the ChatGPT website 👉️ https://chat.openai.com/chat
+3. Select one of the options to automatically copy the `SESSION_TOKEN`, `USER_AGENT`, and `CF_CLEARANCE` or all values at once to your clipboard, or download a single `.env-all` with all of them.
+4. Paste the values wherever they are needed in your project, such as in the `.env` file
 
 ### Install Locally (latest features)
 
