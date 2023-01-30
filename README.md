@@ -10,8 +10,10 @@ This Chrome Extension allows you to quickly and easily copy ChatGPT cookie value
 
 <div style="text-align: center">
 
-Full-Stack Product Manager
-Available for hire [late july](https://links.dev/brian) - Please reach out 🙋‍♂️
+### 👋 Are you Hiring? 👀
+Technical PM
+
+Available for hire [late January 🏥](https://links.dev/brian) - Please reach out!
 
 <a href="https://linkedin.com/in/itsbrianroach" target="_blank">
 <img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px; border-radius: 6px" />
